@@ -41,11 +41,11 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
       />
 
       <CardContent sx={{ width: '100%', padding: '0px !important' }}>
-        <Typography variant="h6" component="h2" fontWeight="bold" gutterBottom>
+        <Typography variant="h6" component="h2" fontWeight="bold" gutterBottom maxWidth={280}>
           {country.name}
         </Typography>
 
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+        <Box display="flex" flexWrap="wrap" gap={2}>
           <InfoItem label="Capital" value={country.capital} />
           <InfoItem label="Continent" value={country.continent.name} />
           <InfoItem label="Phone Code" value={phoneCode} />
