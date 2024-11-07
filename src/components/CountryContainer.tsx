@@ -1,7 +1,9 @@
-import { Typography, Box, CircularProgress } from '@mui/material';
+import { Box } from '@mui/material';
 import CountryList from './CountryList';
 import { useCountryData } from '../hooks/useCountryData';
 import CountrySearchInput from './CountrySearchInput';
+import LoadingSpinner from './LoadingSpinner';
+import ErrorMessage from './ErrorMessage';
 
 const CountryContainer: React.FC = () => {
   const { searchCountries, countries, loading, error } = useCountryData();
@@ -11,11 +13,9 @@ const CountryContainer: React.FC = () => {
       <CountrySearchInput onSearch={searchCountries} />
 
       {loading ? (
-        <CircularProgress />
+        <LoadingSpinner />
       ) : error ? (
-        <Typography variant="body1" color="error" align="center">
-          Error: {error.message}
-        </Typography>
+        <ErrorMessage message={error.message} />
       ) : (
         <CountryList countries={countries} />
       )}
