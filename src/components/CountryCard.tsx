@@ -2,14 +2,18 @@ import { Card, CardContent, Typography, Box } from '@mui/material';
 import Flag from 'react-world-flags';
 import type { Country } from '../models/types';
 import InfoItem from './InfoItem';
+import { formatLanguages, formatPhoneCode, formatValue } from '../lib/utils';
 
 interface CountryCardProps {
   country: Country;
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
-  const languages = country.languages.map((lang) => lang.native).join(', ');
-  const phoneCode = `+${country.phone}`;
+  const capital = formatValue(country.capital);
+  const continentName = formatValue(country.continent?.name);
+  const phoneCode = formatPhoneCode(country.phone);
+  const currency = formatValue(country.currency);
+  const languages = formatLanguages(country.languages);
 
   return (
     <Card
@@ -46,10 +50,10 @@ const CountryCard: React.FC<CountryCardProps> = ({ country }) => {
         </Typography>
 
         <Box display="flex" flexWrap="wrap" gap={2}>
-          <InfoItem label="Capital" value={country.capital} />
-          <InfoItem label="Continent" value={country.continent.name} />
+          <InfoItem label="Capital" value={capital} />
+          <InfoItem label="Continent" value={continentName} />
           <InfoItem label="Phone Code" value={phoneCode} />
-          <InfoItem label="Currency" value={country.currency} />
+          <InfoItem label="Currency" value={currency} />
           <InfoItem label="Languages" value={languages} />
         </Box>
       </CardContent>
