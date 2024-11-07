@@ -12,14 +12,14 @@ const CountryList: React.FC<CountryListProps> = ({ countries }) => {
 
   if (isNotFound) {
     return (
-      <Typography variant="body1" textAlign="center" color="text.secondary">
+      <Typography variant="body1" textAlign="center" color="text.secondary" mb={12}>
         No countries found.
       </Typography>
     );
   }
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} mb={12}>
       {countries.map((country) => (
         <Grid key={country.code} size={{ xs: 12, sm: 6, md: 4 }}>
           <CountryCard country={country} />
