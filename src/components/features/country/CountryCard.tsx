@@ -1,8 +1,8 @@
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import Flag from 'react-world-flags';
-import type { Country } from '../models/types';
-import InfoItem from './InfoItem';
-import { formatLanguages, formatPhoneCode, formatValue } from '../lib/utils';
+import type { Country } from '../../../models/types';
+import InfoItem from '../../ui/InfoItem';
+import { formatLanguages, formatPhoneCode, formatValue } from '../../../lib/utils';
 
 interface CountryCardProps {
   country: Country;

@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material';
 import Providers from './Providers';
-import CountryContainer from '../components/CountryContainer';
+import CountryContainer from '../components/features/country/CountryContainer';
 function App() {
   return (
     <Providers>

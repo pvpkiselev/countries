@@ -12,12 +12,12 @@ export const theme = createTheme({
     },
     h2: {
       fontSize: 24,
-      fontWeight: 700,
+      fontWeight: 400,
       color: '#181818',
     },
     h3: {
       fontSize: 20,
-      fontWeight: 700,
+      fontWeight: 400,
       color: '#181818',
     },
     h4: {

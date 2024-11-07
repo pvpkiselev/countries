@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import CountryList from './CountryList';
-import { useCountryData } from '../hooks/useCountryData';
+import { useCountryData } from '../../../hooks/useCountryData';
 import CountrySearchInput from './CountrySearchInput';
-import LoadingSpinner from './LoadingSpinner';
-import ErrorMessage from './ErrorMessage';
+import LoadingSpinner from '../../ui/LoadingSpinner';
+import ErrorMessage from '../../ui/ErrorMessage';
 
 const CountryContainer: React.FC = () => {
   const { searchCountries, countries, loading, error } = useCountryData();
