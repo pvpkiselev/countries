@@ -1,33 +1,28 @@
 import { useQuery } from '@apollo/client';
 import { useDebouncedCallback } from 'use-debounce';
 import { GET_COUNTRIES } from '../api/getCountriesQuery';
-import { createCodeFilter } from '../lib/utils';
+import { createCountryFilter } from '../lib/utils';
 import type { Country } from '../models/types';
+import { DEBOUNCE_TIME } from '../lib/constants';
 
 interface UseCountryDataResult {
-  refetchCountries: (value: string) => void;
+  searchCountries: (value: string) => void;
   countries: Country[] | undefined;
   loading: boolean;
   error: Error | undefined;
 }
 
 export const useCountryData = (): UseCountryDataResult => {
-  const { data, loading, error, refetch } = useQuery<{ countries: Country[] }>(GET_COUNTRIES, {
-    variables: {
-      filter: createCodeFilter(''),
-    },
-  });
+  const { data, loading, error, refetch } = useQuery<{ countries: Country[] }>(GET_COUNTRIES);
 
-  const debounceTime = 300;
-
-  const debouncedRefetch = useDebouncedCallback((value: string) => {
+  const searchCountries = useDebouncedCallback((value: string) => {
     refetch({
-      filter: createCodeFilter(value),
+      filter: createCountryFilter(value),
     });
-  }, debounceTime);
+  }, DEBOUNCE_TIME);
 
   return {
-    refetchCountries: debouncedRefetch,
+    searchCountries,
     countries: data?.countries,
     loading,
     error,

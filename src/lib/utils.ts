@@ -5,9 +5,9 @@ export const normalizeSearchQuery = (term: string): string => {
   return term.trim().toUpperCase();
 };
 
-export const createCodeFilter = (searchTerm: string) => {
+export const createCountryFilter = (searchTerm: string) => {
   const normalizedTerm = normalizeSearchQuery(searchTerm);
-  return normalizedTerm ? { code: { in: normalizedTerm } } : undefined;
+  return normalizedTerm ? { code: { in: normalizedTerm } } : {};
 };
 
 export const formatValue = (value: string | number): string | number => {

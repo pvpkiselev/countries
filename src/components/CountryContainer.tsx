@@ -4,11 +4,11 @@ import { useCountryData } from '../hooks/useCountryData';
 import CountrySearchInput from './CountrySearchInput';
 
 const CountryContainer: React.FC = () => {
-  const { refetchCountries, countries, loading, error } = useCountryData();
+  const { searchCountries, countries, loading, error } = useCountryData();
 
   return (
     <Box display="flex" flexDirection="column" gap={4} width="100%" rowGap={4}>
-      <CountrySearchInput onSearch={refetchCountries} />
+      <CountrySearchInput onSearch={searchCountries} />
 
       {loading ? (
         <CircularProgress />
